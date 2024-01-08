@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int sum = 0;
+    void f(TreeNode* node,int low,int high){
+        if(node->val >= low && node->val <= high) {
+            sum += node->val;
+            cout<<node->val<<" ";
+        }
+        
+        if(node->left) f(node->left,low,high);
+        if(node->right) f(node->right,low,high);
+        return;
+    }
+    
+    int rangeSumBST(TreeNode* root, int low, int high) {
+        if(root->val >= low && root->val <= high) sum += root->val;
+        f(root->left,low,high);
+        f(root->right,low,high);
+        return sum;
+    }
+};
